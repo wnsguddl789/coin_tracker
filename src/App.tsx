@@ -1,12 +1,12 @@
-import withTheme from "@hocs/withTheme";
+import withTheme from '@hocs/withTheme';
 
-import RouterProvider from "@components/Router";
+import RouterProvider from '@components/Router';
 
-import { useSetThemeState } from "./hooks";
+import { worker } from './mocks/worker';
+
+worker.start();
 
 const App = withTheme(() => {
-	const themeModel = useSetThemeState();
-	const theme = themeModel.getCurrentTheme();
-	return <RouterProvider />;
+  return <RouterProvider />;
 });
 export default App;

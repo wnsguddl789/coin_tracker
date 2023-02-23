@@ -11,6 +11,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@tanstack/react-query": "^4.24.10",
+    "msw": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
@@ -24,5 +26,8 @@
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
     "vite-tsconfig-paths": "^4.0.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

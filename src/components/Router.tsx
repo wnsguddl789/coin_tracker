@@ -1,15 +1,13 @@
-import { lazy } from "react";
+import { createBrowserRouter, RouterProvider as RouteProvider } from 'react-router-dom';
 
-import { createBrowserRouter, RouterProvider as RouteProvider } from "react-router-dom";
-
-const ExamplePage = lazy(() => import("@/components/pages/example"));
-const ExampleDetailPage = lazy(() => import("@/components/pages/example/detail"));
+import CoinListPage from '@pages/CoinListPage';
+import CoinDetailPage from '@pages/CoinDetailPage';
 
 export default function RouterProvider() {
-	const router = createBrowserRouter([
-		{ path: "/", element: <ExamplePage /> },
-		{ path: "/:id", element: <ExampleDetailPage /> },
-	]);
+  const router = createBrowserRouter([
+    { path: '/', element: <CoinListPage /> },
+    { path: '/:coinId', element: <CoinDetailPage /> },
+  ]);
 
-	return <RouteProvider router={router} />;
+  return <RouteProvider router={router} />;
 }
