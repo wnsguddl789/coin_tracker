@@ -1,13 +1,13 @@
-import { createBrowserRouter, RouterProvider as RouteProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider as RouteProvider } from 'react-router-dom'
 
-import CoinListPage from '@pages/CoinListPage';
-import CoinDetailPage from '@pages/CoinDetailPage';
+import CoinListPage from '@pages/CoinListPage'
+import CoinDetailPage from '@pages/CoinDetailPage'
 
 export default function RouterProvider() {
-  const router = createBrowserRouter([
-    { path: '/', element: <CoinListPage /> },
-    { path: '/:coinId', element: <CoinDetailPage /> },
-  ]);
+	const router = createBrowserRouter([
+		{ path: '/', element: <CoinListPage /> },
+		{ path: '/:coinId', element: <CoinDetailPage /> },
+	])
 
-  return <RouteProvider router={router} />;
+	return <RouteProvider router={router} />
 }

@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import Api from '@/configs/api'
+import { Coin } from '../types/coin'
+import { useQuery } from '@tanstack/react-query'
+import { Key, EndPoint } from '@constants/key'
 
-import Api from '@/configs/api';
-import { Coin } from '../types/coin';
-import { useQuery } from '@tanstack/react-query';
-
-export type CoinListViewModel = {
-  coinList?: Coin[];
-  isFetching: boolean;
-  isLoading: boolean;
-};
+export type CoinDetailViewModel = {
+	coin?: Coin
+	isFetching: boolean
+	isLoading: boolean
+}
 
 export const useCoinDetailViewModel = (api: Api, coinId?: string) => {
-  const {
-    data: coinList,
-    isLoading,
-    isFetching,
-  } = useQuery<Coin[]>(['coinList'], () => api.query<Coin[]>({ url: '/coins', options: { method: 'GET' } }));
-  console.log(coinId);
-  return {
-    coinList,
-    isFetching,
-    isLoading,
-  };
-};
+	const {
+		data: coin,
+		isLoading,
+		isFetching,
+	} = useQuery<Coin[]>([Key.COINS], () =>
+		api.query<Coin[]>({ url: EndPoint.fetchCoinDetail, options: { method: 'GET' } }),
+	)
+	return {
+		coin,
+		isFetching,
+		isLoading,
+	}
+}

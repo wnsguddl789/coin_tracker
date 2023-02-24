@@ -1,33 +1,45 @@
 {
-  "name": "nomadcoder_react_assignment",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@tanstack/react-query": "^4.24.10",
-    "msw": "^1.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1",
-    "zustand": "^4.3.3"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react": "^3.1.0",
-    "path": "^0.12.7",
-    "typescript": "^4.9.3",
-    "vite": "^4.1.0",
-    "vite-tsconfig-paths": "^4.0.5"
-  },
-  "msw": {
-    "workerDirectory": "public"
-  }
+	"name": "nomadcoder_react_assignment",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"prettier:all": "prettier --check src/**/*.{ts,tsx}",
+		"init-husky": "npx husky install .husky",
+		"lint-front": "lint-staged"
+	},
+	"dependencies": {
+		"@emotion/react": "^11.10.6",
+		"@emotion/styled": "^11.10.6",
+		"@tanstack/react-query": "^4.24.10",
+		"msw": "^1.0.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.8.1",
+		"zustand": "^4.3.3"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.27",
+		"@types/react-dom": "^18.0.10",
+		"@vitejs/plugin-react": "^3.1.0",
+		"husky": "4",
+		"lint-staged": "^13.1.2",
+		"path": "^0.12.7",
+		"prettier": "^2.8.4",
+		"typescript": "^4.9.3",
+		"vite": "^4.1.0",
+		"vite-tsconfig-paths": "^4.0.5"
+	},
+	"lint-staged": {
+		"src/**/*.{ts,tsx,json}": [
+		  "prettier --write",
+		  "git add"
+		]
+	  },
+	"msw": {
+		"workerDirectory": "public"
+	}
 }

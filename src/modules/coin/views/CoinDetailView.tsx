@@ -1,13 +1,11 @@
-import { Container } from '../components';
-import { CoinListViewModel } from '../viewModels';
-
-import { Link } from 'react-router-dom';
+import { Container } from '../components'
+import { CoinListViewModel } from '../viewModels'
 
 interface Props {
-  viewModel: CoinListViewModel;
+	viewModel: CoinListViewModel
 }
 
 export const CoinDetailView = ({ viewModel }: Props) => {
-  const {} = viewModel;
-  return <Container></Container>;
-};
+	const {} = viewModel
+	return <Container></Container>
+}

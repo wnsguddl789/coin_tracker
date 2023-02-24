@@ -1,12 +1,12 @@
 type Theme = {
 	[key: string]: {
 		colors: {
-			titleColor: string;
-			bgColor: string;
-		};
-	};
-};
+			titleColor: string
+			bgColor: string
+		}
+	}
+}
 
-type ThemeType = "LIGHT" | "DARK";
+type ThemeType = 'LIGHT' | 'DARK'
 
-export type { Theme, ThemeType };
+export type { Theme, ThemeType }

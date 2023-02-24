@@ -1,28 +1,28 @@
-import { ComponentType, useEffect } from 'react';
+import { ComponentType, useEffect } from 'react'
 
-import ThemeProvider from '@/themes/ThemeProvider';
-import { ThemeType } from '@themes/ThemeTypes';
+import ThemeProvider from '@/themes/ThemeProvider'
+import { ThemeType } from '@themes/ThemeTypes'
 
-import useThemeViewModel from '@/modules/theme/viewModels/useThemeViewModel';
+import useThemeViewModel from '@/modules/theme/viewModels/useThemeViewModel'
 
-export type withModalProps = { themeMode: ThemeType };
+export type withModalProps = { themeMode: ThemeType }
 
 const withTheme = (Component: ComponentType) => () => {
-  const { setTheme } = useThemeViewModel();
+	const { setTheme } = useThemeViewModel()
 
-  useEffect(() => {
-    const theme = localStorage.getItem('Theme') as ThemeType | undefined;
+	useEffect(() => {
+		const theme = localStorage.getItem('Theme') as ThemeType | undefined
 
-    if (!theme) return;
+		if (!theme) return
 
-    setTheme(theme);
-  }, []);
+		setTheme(theme)
+	}, [])
 
-  return (
-    <ThemeProvider>
-      <Component />
-    </ThemeProvider>
-  );
-};
+	return (
+		<ThemeProvider>
+			<Component />
+		</ThemeProvider>
+	)
+}
 
-export default withTheme;
+export default withTheme
