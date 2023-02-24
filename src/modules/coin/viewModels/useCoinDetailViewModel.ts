@@ -4,12 +4,12 @@ import { useQueries } from '@tanstack/react-query'
 import { Key, CoinPaprikaEndPoint } from '@constants/key'
 import dayjs from 'dayjs'
 
+const today = dayjs().format('YYYY-MM-DD')
+
 export type CoinDetailViewModel = {
 	coin?: Coin
-	coinHistory: CoinHistory[]
+	coinHistory?: CoinHistory[]
 }
-
-const today = dayjs().format('YYYY-MM-DD')
 
 export const useCoinDetailViewModel = (api: Api, coinId?: string) => {
 	const fetchCoinDetail = () => {
