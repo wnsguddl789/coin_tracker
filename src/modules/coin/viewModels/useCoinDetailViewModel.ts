@@ -1,25 +1,39 @@
 import Api from '@/configs/api'
-import { Coin } from '../types/coin'
-import { useQuery } from '@tanstack/react-query'
-import { Key, EndPoint } from '@constants/key'
+import { Coin, CoinHistory } from '../types/coin'
+import { useQueries } from '@tanstack/react-query'
+import { Key, CoinPaprikaEndPoint } from '@constants/key'
+import dayjs from 'dayjs'
 
 export type CoinDetailViewModel = {
 	coin?: Coin
-	isFetching: boolean
-	isLoading: boolean
+	coinHistory: CoinHistory[]
 }
 
+const today = dayjs().format('YYYY-MM-DD')
+
 export const useCoinDetailViewModel = (api: Api, coinId?: string) => {
-	const {
-		data: coin,
-		isLoading,
-		isFetching,
-	} = useQuery<Coin[]>([Key.COINS], () =>
-		api.query<Coin[]>({ url: EndPoint.fetchCoinDetail, options: { method: 'GET' } }),
-	)
+	const fetchCoinDetail = () => {
+		return api.query<Coin>({
+			url: `${CoinPaprikaEndPoint.fetchCoinDetail}/${coinId}`,
+			options: { method: 'GET' },
+		})
+	}
+	const fetchCoinHistory = () => {
+		return api.query<CoinHistory[]>({
+			url: `${CoinPaprikaEndPoint.fetchCoinDetail}/${coinId}/ohlcv/historical?start=${today}&end=${today}`,
+			options: { method: 'GET' },
+		})
+	}
+
+	const [{ data: coin }, { data: coinHistory }] = useQueries({
+		queries: [
+			{ queryKey: [Key.COIN], queryFn: fetchCoinDetail },
+			{ queryKey: [Key.COIN_HISTORY], queryFn: fetchCoinHistory },
+		],
+	})
+
 	return {
 		coin,
-		isFetching,
-		isLoading,
+		coinHistory,
 	}
 }

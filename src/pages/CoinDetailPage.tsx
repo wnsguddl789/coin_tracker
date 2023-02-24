@@ -12,10 +12,12 @@ type CoinId = {
 	coinId: string
 }
 
+const BASE_URL = `https://api.coinpaprika.com/v1`
+
 const CoinDetailPage = withApiInstance(({ api }: Props) => {
 	const { coinId } = useParams<CoinId>()
 	const viewModel = useCoinDetailViewModel(api, coinId)
 	return <CoinDetailView viewModel={viewModel} />
-})
+}, BASE_URL)
 
 export default CoinDetailPage

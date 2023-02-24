@@ -7,8 +7,8 @@ interface withApiInstanceProps {
 
 const BASE_URL = `http://localhost:5173`
 
-const withApiInstance = (Component: ComponentType<withApiInstanceProps>) => () => {
-	const api = useMemo(() => Api.createInstance(BASE_URL), [])
+const withApiInstance = (Component: ComponentType<withApiInstanceProps>, url: string) => () => {
+	const api = useMemo(() => Api.createInstance(url), [])
 	return <Component api={api} />
 }
 
